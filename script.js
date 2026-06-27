@@ -1,27 +1,33 @@
-const noBtn = document.getElementById("noBtn");
+function prank(){
 
-function moveButton() {
-    const maxX = window.innerWidth - noBtn.offsetWidth;
-    const maxY = window.innerHeight - noBtn.offsetHeight;
+    document.body.style.background = "black";
+    document.getElementById("screen").style.display = "block";
 
-    const x = Math.floor(Math.random() * maxX);
-    const y = Math.floor(Math.random() * maxY);
+    const lines = [
+        "Connecting...",
+        "Searching account...",
+        "Loading files...",
+        "Decrypting password...",
+        "Uploading memes...",
+        "Installing 999 viruses...",
+        "Access Granted...",
+        "Downloading homework...",
+        "ERROR...",
+        "😂 Just kidding! Walang na-hack."
+    ];
 
-    noBtn.style.position = "fixed";
-    noBtn.style.left = x + "px";
-    noBtn.style.top = y + "px";
-}
+    let i = 0;
 
-// Tatakbo ang NO kapag nilapitan ng mouse
-noBtn.addEventListener("mouseover", moveButton);
+    const timer = setInterval(() => {
 
-// Tatakbo rin kapag susubukang i-click
-noBtn.addEventListener("click", function(e) {
-    e.preventDefault();
-    moveButton();
-});
+        document.getElementById("text").innerHTML += lines[i] + "<br>";
 
-function yesAnswer() {
-    document.getElementById("message").innerHTML =
-        "❤️ HALAAA SABI qna ee hihi YEs pipindutin mo I LOVE YOU! ❤️";
+        i++;
+
+        if(i >= lines.length){
+            clearInterval(timer);
+        }
+
+    },700);
+
 }
